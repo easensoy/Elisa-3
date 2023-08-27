@@ -9,7 +9,6 @@ int Threshold_T2 = 880;
 // This function is being called from void loop() so it will run repeatedly
 void TASK_2() {
 
-  // put your main code here, to run repeatedly:
   // First step is to update the sensor values by reading the sensors
   UpdateGroundSensors_T2();
 
@@ -30,10 +29,8 @@ void TASK_2() {
 
 }
 
-// Updates values of all ground sensors
-// and makes them binary based on threshold
-// value. anything greater than threshold is
-// 1 and lower than threshold is 0.
+// Updates values of all ground sensors and makes them binary based on threshold value. 
+// Anything greater than threshold is 1 and lower than threshold is 0.
 void UpdateGroundSensors_T2() {
   for (int i = 0; i<=3; i++) {
      ReadGroundSensor_T2(i);
@@ -43,8 +40,7 @@ void UpdateGroundSensors_T2() {
 
 // Reads the Ground Sensor whose number is provided e.g 0, 1, 2 or 3
 void ReadGroundSensor_T2(int sensornum) {
-  // Turn on respective IR Led so that light shines on surface
-  // and we are able to read light coming back from ground.
+  // Turn on respective IR Led so that light shines on surface and we are able to read light coming back from ground.
   GroundLedOn_T2(sensornum);
   delay(10);
   
@@ -61,10 +57,8 @@ void ReadGroundSensor_T2(int sensornum) {
   
 }
 
-// This function checks value in RawSensorValue Variable,
-// if that is greater than Threshold value then ground sensors
-// array's corresponding value is changed to 1, if not then it is
-// given 0 value.
+// This function checks value in RawSensorValue Variable, if that is greater than Threshold value then ground sensors
+// array's corresponding value is changed to 1, if not then it is given 0 value.
 void ConvertSensorToBinary_T2(int sensornum) {
   if (RawSensorValue > Threshold_T2) {
     ground[sensornum] = 1;
@@ -77,8 +71,7 @@ void ConvertSensorToBinary_T2(int sensornum) {
 
 // This function decides the movement of robot after checking values of all 4 ground sensors.
 void ProcessRobotState_T2(bool LeftMostSensor, bool LeftSensor, bool RightSensor, bool RightMostSensor) {
-  // here if the right most sensor comes on black, the robot will keep moving right until
-  // left sensor comes on black
+  // here if the right most sensor comes on black, the robot will keep moving right until left sensor comes on black
   if (RightMostSensor == 1) {
 //    CurrentState = Stop;
       do{
@@ -88,8 +81,7 @@ void ProcessRobotState_T2(bool LeftMostSensor, bool LeftSensor, bool RightSensor
         LeftTurn_T2();
   }
 
-  // if the left most sensor comes on black, the robot will keep moving left until
-  // right sensor comes on black
+  // if the left most sensor comes on black, the robot will keep moving left until right sensor comes on black
   else if (LeftMostSensor == 1) {
 //    CurrentState = Stop;
       do{
@@ -120,8 +112,7 @@ void ProcessRobotState_T2(bool LeftMostSensor, bool LeftSensor, bool RightSensor
   }
 }
 
-// This function calls the respective movement functions
-// based on current robot state
+// This function calls the respective movement functions based on current robot state
 void ActOnRobotState_T2(){
   if (CurrentState == Forward) {
     MotorsForward_T2();
@@ -137,16 +128,14 @@ void ActOnRobotState_T2(){
   }
 }
 
-// Turn Robot Left by moving Right wheel Forward
-// and Left wheel backward.
+// Turn Robot Left by moving Right wheel Forward and Left wheel backward.
 void LeftTurn_T2() {
   analogWrite(6, 0);
   analogWrite(7, 6.7 * 2.55);
   RightMotorForward_T2(9);
 }
 
-// Turn Robot Right by moving Left wheel Forward
-// and Right wheel backward
+// Turn Robot Right by moving Left wheel Forward and Right wheel backward
 void RightTurn_T2() {
   LeftMotorForward_T2(7.5);
   analogWrite(5, 0);
