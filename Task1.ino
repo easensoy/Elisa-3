@@ -35,7 +35,6 @@ void TASK_1() {
   
 while(1)
 {Serial.println("0");
-  // put your main code here, to run repeatedly:
   // First step is to update the sensor values by reading the sensors
   UpdateGroundSensorsT1();
 
@@ -56,10 +55,8 @@ while(1)
  }
 }  
 
-// Updates values of all ground sensors
-// and makes them binary based on threshold
-// value. anything greater than threshold is
-// 1 and lower than threshold is 0.
+// Updates values of all ground sensor and makes them binary based on threshol value. 
+// Anything greater than threshold is 1 and lower than threshold is 0.
 void UpdateGroundSensorsT1() {
   for (int i = 0; i<=3; i++) {
      ReadGroundSensorT1(i);
@@ -88,10 +85,8 @@ void ReadGroundSensorT1(int sensornum) {
   
 }
 
-// This function checks value in RawSensorValue Variable,
-// if that is greater than Threshold value then ground sensors
-// array's corresponding value is changed to 1, if not then it is
-// given 0 value.
+// This function checks value in RawSensorValue Variable, if that is greater than Threshold value then ground sensors
+// array's corresponding value is changed to 1, if not then it is given 0 value.
 void ConvertSensorToBinaryT1(int sensornum) {
   if (RawSensorValue > Threshold_T1) {
     ground[sensornum] = 1;
@@ -108,8 +103,7 @@ void ProcessRobotStateT1(bool LeftMostSensor, bool LeftSensor, bool RightSensor,
   if (RightMostSensor == 1 && LeftMostSensor == 1) {
     MotorsForwardT1();
   }
-  // here if the right most sensor comes on black, the robot will keep moving right until
-  // left sensor comes on black
+  // here if the right most sensor comes on black, the robot will keep moving right until left sensor comes on black
   else if (RightMostSensor == 1) {
 //    CurrentState = Stop;
       do{
@@ -119,8 +113,7 @@ void ProcessRobotStateT1(bool LeftMostSensor, bool LeftSensor, bool RightSensor,
         LeftTurnT1();
   }
 
-// if the left most sensor comes on black, the robot will keep moving left until
-// right sensor comes on black  
+// if the left most sensor comes on black, the robot will keep moving left until right sensor comes on black  
   else if (LeftMostSensor == 1) {
 //    CurrentState = Stop;
       do{
@@ -151,8 +144,7 @@ void ProcessRobotStateT1(bool LeftMostSensor, bool LeftSensor, bool RightSensor,
   }
 }
 
-// This function calls the respective movement functions
-// based on current robot state
+// This function calls the respective movement functions based on current robot state
 void ActOnRobotStateT1(){
   if (CurrentState == Forward) {
     MotorsForwardT1();
