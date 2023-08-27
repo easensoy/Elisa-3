@@ -1,6 +1,5 @@
 
 void setup() {
-  // put your setup code here, to run once:
 Serial.begin(9600);
 
 //Setting first four bits high on DDRC and last four low
@@ -15,7 +14,6 @@ DDRB |= (1<<PB6);
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
   Serial.println(SelectorPosition());
 
   //If Selector switch is at 0 position do task1
