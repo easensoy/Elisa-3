@@ -33,6 +33,10 @@ Speed Control: By applying a PWM signal to the input of the H-bridge, the averag
 Direction Control: The H-bridge allows the motor to rotate in both forward and reverse directions. By controlling the state of the switches in the H-bridge, the polarity of the voltage applied to the motor terminals can be changed, thereby changing the motor's direction of rotation.
 
 
+## The speed profile of a DC motor over time when a PWM signal is applied to the motor
+![SpeedProfile_PWM_DCmotor](https://github.com/easensoy/Elisa-3/assets/76905667/f8b7f050-0d73-4962-996b-17f667beb1b5)
+
+
 # The image of the robot
 ![20220516_133206](https://user-images.githubusercontent.com/76905667/180611538-d0e1da62-15ba-44e9-b2c8-17734cd83ac6.jpg)
 
